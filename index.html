@@ -2,7 +2,7 @@
 <html lang="my">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ePostcard - Proposal, Formspree & Telegram Delivery</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,7 +31,7 @@
             background: var(--bg-gradient);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
-            padding: 20px 20px 90px 20px;
+            padding: 70px 14px 150px 14px;
             overflow-x: hidden;
             position: relative;
             transition: background 0.5s ease;
@@ -43,29 +43,33 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Top Control Bar (Themes & Guide) */
+        /* ===== TOP CONTROL BAR ===== */
         .top-bar-left {
             position: fixed;
-            top: 15px;
-            left: 15px;
-            background: rgba(0, 0, 0, 0.3);
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.35);
             backdrop-filter: blur(10px);
-            padding: 8px 15px;
-            border-radius: 30px;
+            -webkit-backdrop-filter: blur(10px);
+            padding: 6px 10px;
+            border-radius: 26px;
             display: flex;
-            gap: 10px;
+            gap: 7px;
             z-index: 1000;
             border: 1px solid rgba(255, 255, 255, 0.2);
             align-items: center;
+            max-width: calc(100% - 20px);
+            flex-wrap: wrap;
         }
 
         .theme-btn {
-            width: 26px;
-            height: 26px;
+            width: 22px;
+            height: 22px;
             border-radius: 50%;
             border: 2px solid white;
             cursor: pointer;
             transition: 0.2s;
+            flex-shrink: 0;
         }
         .theme-btn:hover { transform: scale(1.2); }
 
@@ -73,15 +77,17 @@
             background: #e0f2fe;
             border: 1.5px solid #bae6fd;
             color: #0284c7;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 16px;
+            font-size: 10px;
             font-weight: 700;
             cursor: pointer;
             transition: 0.2s;
+            white-space: nowrap;
         }
         .guide-top-btn:hover { background: #bae6fd; }
 
+        /* ===== FLOATING HEARTS ===== */
         .floating-heart {
             position: absolute;
             font-size: 24px;
@@ -96,13 +102,14 @@
             100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
         }
 
+        /* ===== CARD ===== */
         .card {
             background: var(--card-bg);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 2px solid var(--card-border);
-            padding: 40px 25px;
-            border-radius: 30px;
+            padding: 28px 18px;
+            border-radius: 26px;
             box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
             text-align: center;
             max-width: 420px;
@@ -112,8 +119,8 @@
         }
 
         .gif-wrapper {
-            width: 170px;
-            height: 170px;
+            width: 150px;
+            height: 150px;
             margin: 0 auto;
             position: relative;
             background: transparent;
@@ -129,6 +136,7 @@
             background: transparent;
             border: none;
             box-shadow: none;
+            cursor: pointer;
         }
 
         .editable-wrap {
@@ -138,26 +146,30 @@
             margin-bottom: 12px;
         }
 
+        /* ===== EDIT BADGE ===== */
         .edit-badge {
             position: absolute;
-            top: -10px;
-            right: -10px;
+            top: -14px;
+            right: -14px;
             background: #ff4081;
             color: white;
-            font-size: 12px;
-            width: 26px;
-            height: 26px;
+            font-size: 16px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.4);
             cursor: pointer;
-            z-index: 25;
+            z-index: 30;
             transition: 0.2s;
+            border: 2px solid white;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .edit-badge:hover {
+        .edit-badge:hover, .edit-badge:active {
             transform: scale(1.15);
             background: #f50057;
         }
@@ -167,11 +179,13 @@
             outline-offset: 4px;
             border-radius: 8px;
             background: rgba(255, 255, 255, 0.15);
+            min-height: 1em;
+            cursor: text;
         }
 
         h2 {
             color: var(--text-color);
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 700;
             line-height: 1.4;
         }
@@ -181,27 +195,29 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 25px;
+            margin-bottom: 22px;
         }
 
         .warning-text {
             color: var(--warning-text);
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
             background: var(--warning-bg);
-            padding: 8px 16px;
+            padding: 8px 14px;
             border-radius: 20px;
             border: 1px dashed var(--warning-border);
             display: inline-block;
             width: 100%;
         }
 
+        /* ===== BUTTONS ===== */
         .btn-group {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 15px;
-            min-height: 80px;
+            gap: 12px;
+            min-height: 70px;
+            flex-wrap: wrap;
         }
 
         .btn-editable-wrap {
@@ -221,29 +237,29 @@
         .yes-btn {
             background: var(--yes-bg);
             color: white;
-            font-size: 20px;
-            padding: 14px 28px;
+            font-size: 18px;
+            padding: 12px 22px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         .no-btn {
             background: var(--no-bg);
             color: white;
-            font-size: 18px;
-            padding: 14px 28px;
+            font-size: 16px;
+            padding: 12px 22px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         .celebrate-title {
             color: var(--text-color);
-            font-size: 26px;
+            font-size: 24px;
             font-weight: bold;
         }
 
         .celebrate-desc {
             color: var(--text-color);
             opacity: 0.9;
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 600;
         }
 
@@ -258,34 +274,39 @@
             text-align: center;
         }
 
-        /* Bottom Floating Control Bar */
+        /* ===== BOTTOM FLOATING CONTROL BAR ===== */
         .bottom-bar {
             position: fixed;
-            bottom: 15px;
+            bottom: 12px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(30, 15, 30, 0.85);
+            background: rgba(30, 15, 30, 0.9);
             backdrop-filter: blur(10px);
-            padding: 8px 15px;
-            border-radius: 30px;
+            -webkit-backdrop-filter: blur(10px);
+            padding: 8px 10px;
+            border-radius: 22px;
             box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
             z-index: 1000;
             display: flex;
-            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px;
             align-items: center;
             border: 1px solid rgba(255, 128, 171, 0.3);
-            max-width: 95vw;
+            width: calc(100% - 24px);
+            max-width: 560px;
         }
 
         .formspree-input {
-            padding: 7px 12px;
+            padding: 6px 10px;
             border: 1px solid #ff80ab;
-            border-radius: 20px;
-            font-size: 12px;
+            border-radius: 18px;
+            font-size: 11px;
             background: rgba(255, 255, 255, 0.1);
             color: #fff;
             outline: none;
-            width: 130px;
+            flex: 1 1 120px;
+            min-width: 100px;
         }
         .formspree-input::placeholder { color: rgba(255,255,255,0.5); }
 
@@ -293,41 +314,42 @@
             background: var(--no-bg);
             color: white;
             border: none;
-            padding: 8px 12px;
-            border-radius: 20px;
+            padding: 7px 10px;
+            border-radius: 18px;
             font-weight: bold;
-            font-size: 12px;
+            font-size: 11px;
             cursor: pointer;
             transition: 0.2s;
             white-space: nowrap;
+            flex: 0 0 auto;
         }
         .control-action-btn:hover { transform: scale(1.05); }
 
         .btn-preview-mode { background: linear-gradient(135deg, #00b09b, #96c93d); }
         .btn-telegram-mode { background: linear-gradient(135deg, #3b82f6, #2563eb); }
-        .btn-formspree-guide { background: linear-gradient(135deg, #f59e0b, #d97706); }
 
-        /* Modals */
+        /* ===== MODALS ===== */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.6);
             backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
             display: none;
             justify-content: center;
             align-items: center;
             z-index: 2000;
-            padding: 15px;
+            padding: 12px;
         }
         .modal-content {
             background: #ffffff;
             border: 2px solid #3b82f6;
-            padding: 24px;
-            border-radius: 24px;
+            padding: 18px;
+            border-radius: 20px;
             max-width: 420px;
             width: 100%;
             box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-            max-height: 90vh;
+            max-height: 88vh;
             overflow-y: auto;
             color: #1e293b;
             text-align: left;
@@ -359,6 +381,7 @@
         }
         .warning-input-row input {
             flex: 1;
+            min-width: 0;
             padding: 8px 12px;
             border: 1px solid #ff80ab;
             border-radius: 8px;
@@ -368,7 +391,7 @@
             outline: none;
         }
         .del-row-btn {
-            background: #ff416c; color: white; border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-weight: bold; display: flex; align-items: center; justify-content: center;
+            background: #ff416c; color: white; border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-weight: bold; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
         }
         .modal-btn {
             width: 100%; padding: 10px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 14px; transition: 0.2s; margin-top: 8px;
@@ -377,7 +400,7 @@
         .save-btn { background: #00b09b; color: white; }
         .cancel-btn { background: #555; color: #fff; }
 
-        /* Guide Body Styles */
+        /* ===== GUIDE STYLES ===== */
         .guide-step {
             display: flex; gap: 8px; align-items: flex-start; margin-bottom: 10px; font-size: 13px; line-height: 1.5;
         }
@@ -386,15 +409,15 @@
         }
         .dark .guide-step-num { background: rgba(255,128,171,0.2); color: #ff80ab; }
 
-        /* Payment & Telegram Modal Styles */
+        /* ===== PAYMENT & TELEGRAM MODAL ===== */
         .payment-section {
             background: linear-gradient(135deg, #fffbeb, #fef3c7); border: 1.5px solid #fde68a; border-radius: 16px; padding: 12px; margin-bottom: 12px;
         }
         .payment-section h5 { color: #b45309; font-size: 12px; font-weight: 700; margin-bottom: 8px; border-bottom: 1px dashed #fcd34d; padding-bottom: 4px; }
-        .pay-row { display: flex; justify-content: space-between; align-items: center; gap: 6px; padding: 5px 8px; background: #ffffff; border: 1px solid #fef3c7; border-radius: 8px; margin-bottom: 4px; }
+        .pay-row { display: flex; justify-content: space-between; align-items: center; gap: 6px; padding: 5px 8px; background: #ffffff; border: 1px solid #fef3c7; border-radius: 8px; margin-bottom: 4px; flex-wrap: wrap; }
         .pay-label { font-size: 10px; font-weight: 700; color: #92400e; }
-        .pay-value { font-size: 11px; font-weight: 600; color: #1e293b; text-align: right; word-break: break-all; }
-        .pay-copy-btn { background: #fef3c7; border: 1px solid #fcd34d; color: #b45309; border-radius: 6px; padding: 3px 6px; font-size: 10px; font-weight: 700; cursor: pointer; }
+        .pay-value { font-size: 11px; font-weight: 600; color: #1e293b; text-align: right; word-break: break-all; flex: 1; min-width: 0; }
+        .pay-copy-btn { background: #fef3c7; border: 1px solid #fcd34d; color: #b45309; border-radius: 6px; padding: 3px 6px; font-size: 10px; font-weight: 700; cursor: pointer; flex-shrink: 0; }
         .pay-price-row { background: linear-gradient(135deg, #fef2f2, #fee2e2); border-color: #fecaca; }
         .pay-price-row .pay-label { color: #b91c1c; }
         .pay-price-row .pay-value { color: #dc2626; font-weight: 800; font-size: 12px; }
@@ -412,7 +435,7 @@
         .form-group input { width: 100%; padding: 10px 14px; background: #f9fbfd; border: 1.5px solid #e2e8f0; border-radius: 12px; font-size: 13px; color: #0f172a; outline: none; }
 
         .loading-overlay {
-            display: none; position: absolute; inset: 0; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(3px); z-index: 3000; border-radius: 24px; flex-direction: column; justify-content: center; align-items: center; gap: 10px;
+            display: none; position: absolute; inset: 0; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(3px); z-index: 3000; border-radius: 20px; flex-direction: column; justify-content: center; align-items: center; gap: 10px;
         }
         .loading-spinner { width: 36px; height: 36px; border: 4px solid #e2e8f0; border-top: 4px solid #2563eb; border-radius: 50%; animation: spin 0.8s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
@@ -421,16 +444,63 @@
         .thankyou-section { display: none; text-align: center; padding: 10px 0; }
         .thankyou-section.show { display: block; }
         .thankyou-badge { width: 50px; height: 50px; margin: 0 auto 10px auto; border-radius: 50%; background: #10b981; display: flex; align-items: center; justify-content: center; font-size: 24px; color: white; }
-        .contact-copy-row { display: flex; justify-content: space-between; align-items: center; gap: 6px; padding: 8px 10px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; margin-bottom: 6px; }
+        .contact-copy-row { display: flex; justify-content: space-between; align-items: center; gap: 6px; padding: 8px 10px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; margin-bottom: 6px; flex-wrap: wrap; }
         .cc-label { font-size: 10px; font-weight: 700; color: #047857; }
-        .cc-value { font-size: 12px; font-weight: 700; color: #065f46; }
-        .cc-copy-btn { background: #dcfce7; border: 1px solid #bbf7d0; color: #047857; border-radius: 6px; padding: 4px 8px; font-size: 10px; font-weight: 700; cursor: pointer; }
+        .cc-value { font-size: 12px; font-weight: 700; color: #065f46; word-break: break-all; flex: 1; min-width: 0; }
+        .cc-copy-btn { background: #dcfce7; border: 1px solid #bbf7d0; color: #047857; border-radius: 6px; padding: 4px 8px; font-size: 10px; font-weight: 700; cursor: pointer; flex-shrink: 0; }
 
         body.preview-active .edit-badge,
         body.preview-active .top-bar-left,
         body.preview-active .hint-text,
         body.preview-active .formspree-input {
             display: none !important;
+        }
+
+        /* ===== RESPONSIVE: EXTRA SMALL PHONES ===== */
+        @media (max-width: 380px) {
+            .control-action-btn {
+                font-size: 10px;
+                padding: 6px 8px;
+            }
+            .formspree-input {
+                font-size: 10px;
+                flex: 1 1 100%;
+                min-width: 80px;
+            }
+            .bottom-bar {
+                gap: 5px;
+                padding: 7px 8px;
+            }
+            .yes-btn, .no-btn {
+                font-size: 15px;
+                padding: 10px 18px;
+            }
+            .card {
+                padding: 22px 14px;
+            }
+            .gif-wrapper {
+                width: 120px;
+                height: 120px;
+            }
+            h2 { font-size: 19px; }
+            .edit-badge {
+                width: 32px;
+                height: 32px;
+                font-size: 14px;
+                top: -12px;
+                right: -12px;
+            }
+        }
+
+        /* ===== RESPONSIVE: TABLETS & UP ===== */
+        @media (min-width: 600px) {
+            .bottom-bar {
+                width: auto;
+                flex-wrap: nowrap;
+            }
+            .formspree-input {
+                flex: 0 0 130px;
+            }
         }
     </style>
 </head>
@@ -455,7 +525,7 @@
 
 <div class="card" id="card">
     <div class="editable-wrap" style="margin-bottom: 15px;">
-        <div class="gif-wrapper">
+        <div class="gif-wrapper" onclick="triggerImageUpload('main')">
             <img id="gift" class="gift-img" src="https://i.pinimg.com/736x/91/e1/5f/91e15fec30e07a18152417c48d613dca.jpg">
         </div>
         <span class="edit-badge" onclick="triggerImageUpload('main')" title="ပုံပြောင်းရန် နှိပ်ပါ">✏️</span>
@@ -486,10 +556,9 @@
 </div>
 
 
-<!-- Bottom Bar (Formspree Input + Preview + Telegram + Guide) -->
+<!-- Bottom Bar (Formspree Input + Preview + Telegram + Reset) -->
 <div class="bottom-bar">
     <input type="text" id="formspreeUrlInput" class="formspree-input" placeholder="Formspree URL..." oninput="updateFormspree(this)">
-    <button class="control-action-btn btn-formspree-guide" onclick="openFormspreeGuideModal()">ℹ️ Formspree</button>
     <button id="previewBtn" class="control-action-btn btn-preview-mode" onclick="togglePreview()">👁️ Preview</button>
     <button class="control-action-btn btn-telegram-mode" onclick="openTelegramModal()">🚀 Telegram</button>
     <button class="control-action-btn" onclick="resetApp()">🔄 အစက</button>
@@ -501,21 +570,9 @@
         <h3>📖 အသုံးပြုနည်း လမ်းညွှန် (Guide)</h3>
         <div class="guide-step"><div class="guide-step-num">1</div><div><strong>စာသားနှင့် ပုံများပြင်ဆင်ခြင်း:</strong> ကတ်ပေါ်ရှိ ခဲတန် (✏️) လေးများကို နှိပ်၍ မိမိလိုချင်သော စာသားနှင့် ပုံများကို ပြင်ဆင်ပါ။</div></div>
         <div class="guide-step"><div class="guide-step-num">2</div><div><strong>Warning များနှင့် Theme များ:</strong> 'ဟင့်အင်' နှိပ်တိုင်းပေါ်မည့် သတိပေးချက်စာသားများကို စီမံနိုင်ပြီး ဘယ်ဘက်အပေါ်ထောင့်မှ Theme ၅ မျိုးပြောင်းနိုင်ပါသည်။</div></div>
-        <div class="guide-step"><div class="guide-step-num">3</div><div><strong>Formspree ချိတ်ဆက်ခြင်း:</strong> 'Formspree' ခလုတ်ကို နှိပ်ပြီး မိမိ Formspree Endpoint URL ထည့်သွင်းပါက လက်ခံရရှိချိန် မေးလ်တိုက်ရိုက်ဝင်မည် ဖြစ်ပါသည်။</div></div>
+        <div class="guide-step"><div class="guide-step-num">3</div><div><strong>Formspree ချိတ်ဆက်ခြင်း:</strong> အောက်ခြေဘားတွင်ရှိသော <strong>Formspree URL...</strong> နေရာတွင် မိမိ Formspree Endpoint URL ထည့်သွင်းပါက လက်ခံရရှိချိန် မေးလ်တိုက်ရိုက်ဝင်မည် ဖြစ်ပါသည်။</div></div>
         <div class="guide-step"><div class="guide-step-num">4</div><div><strong>Telegram သို့ ပို့ဆောင်ခြင်း:</strong> ပြီးပြည့်စုံပါက '🚀 Telegram' ခလုတ်ကို နှိပ်၍ ငွေလွှဲပြေစာတင်ကာ ဘော့တ်ထဲသို့ တိုက်ရိုက်ပို့နိုင်ပါသည်။</div></div>
         <button class="modal-btn save-btn" onclick="closeGuideModal()">✅ နားလည်ပါပြီ</button>
-    </div>
-</div>
-
-<!-- FORMSPREE GUIDE MODAL -->
-<div id="formspreeGuideModal" class="modal-overlay">
-    <div class="modal-content dark">
-        <h3>ℹ️ Formspree အသုံးပြုနည်း လမ်းညွှန်</h3>
-        <div class="guide-step"><div class="guide-step-num">1</div><div><strong>Formspree Account ဖန်တီးခြင်း:</strong> <a href="https://formspree.io" target="_blank" style="color: #60a5fa;">formspree.io</a> သို့သွားပြီး အကောင့်အသစ်ဖွင့်ပါ။</div></div>
-        <div class="guide-step"><div class="guide-step-num">2</div><div><strong>New Form ဖန်တီးရန်:</strong> Form အသစ်တစ်ခုဆောက်ပြီး ထွက်လာသော Endpoint URL (ဥပမာ - <code>https://formspree.io/f/xyz...</code>) ကို ကူးယူပါ။</div></div>
-        <div class="guide-step"><div class="guide-step-num">3</div><div><strong>URL ထည့်သွင်းရန်:</strong> ဤအက်ပ်၏ အောက်ခြေဘားတွင်ရှိသော <strong>Formspree URL...</strong> စာသားနေရာတွင် အဆိုပါ URL ကို ထည့်ပါ။</div></div>
-        <div class="guide-step"><div class="guide-step-num">4</div><div><strong>အလုပ်လုပ်ပုံ:</strong> တစ်စုံတစ်ယောက်က 'ချစ်တယ်' ကို နှိပ်လိုက်သည်နှင့် သင့်ထံသို့ Email ဖြင့် ချက်ချင်းအကြောင်းကြားစာ ရောက်ရှိမည် ဖြစ်ပါသည်။</div></div>
-        <button class="modal-btn save-btn" onclick="closeFormspreeGuideModal()">✅ ပိတ်မည်</button>
     </div>
 </div>
 
@@ -538,9 +595,9 @@
             <div class="loading-text">Telegram သို့ ပို့ဆောင်နေပါသည်... ⏳</div>
         </div>
 
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1.5px solid #f1f5f9; padding-bottom: 8px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1.5px solid #f1f5f9; padding-bottom: 8px; gap: 8px;">
             <h3 style="margin:0; border:none; padding:0;">✈️ File & Payment Delivery</h3>
-            <button onclick="closeTelegramModal()" style="background:#f1f5f9; border:none; width:26px; height:26px; border-radius:50%; font-weight:bold; cursor:pointer;">✕</button>
+            <button onclick="closeTelegramModal()" style="background:#f1f5f9; border:none; width:26px; height:26px; border-radius:50%; font-weight:bold; cursor:pointer; flex-shrink: 0;">✕</button>
         </div>
 
         <div id="telegramFormBlock">
@@ -609,12 +666,35 @@
     let activeImageType = 'main';
     let isPreviewOnly = false;
 
+    // လက်ရှိ ပြင်ထားတဲ့ တန်ဖိုးများ (reset လုပ်ရင် ဒီဟာတွေ ပြန်သုံးမယ်)
+    let currentMainGif = "https://i.pinimg.com/736x/91/e1/5f/91e15fec30e07a18152417c48d613dca.jpg";
+    let currentSuccessGif = "https://i.pinimg.com/736x/6c/01/49/6c0149f331f569419e234231b985a4a8.jpg";
+    let currentMainTitle = "ပြန်ချစ်ပါတော့လား<br>အများကြီးချစ်ပေးမယ်လေ";
+    let currentYesText = "ချစ်တယ်";
+    let currentNoText = "ဟင့်အင်";
+    let currentCelebTitle = "I Love You Tooo Hee Hee ";
+    let currentCelebDesc = "ကိုယ့်ကိုချစ်ခွင့် လေးပေးပါနော် အများကြီးချစ်ပေးမှာပါ";
+
+    let warnings = [
+        "တကယ်ပဲ ငြင်းမှာလား? 🥺",
+        "နောက်တစ်ခါ သေချာ စဉ်းစားပါဦး... 💔",
+        "စိတ်မဆိုးပါနဲ့နော်... ❤️",
+        "မနှိပ်ပါနဲ့တော့...😭",
+        "ချစ်တယ် ကိုပဲ နှိပ်လိုက်ပါတော့... ✨"
+    ];
+
+    let yesScale = 1;
+    let noScale = 1;
+    let noClickCount = 0;
+    let isAccepted = false;
+
     function updateFormspree(input) {
         FORMSPREE_URL = input.value.trim();
     }
 
+    // Preview နှိပ်တိုင်း အစက ဖြစ်သွားစေရန်
     function togglePreview() {
-        resetApp(); // အောက် bar ခလုတ်နှိပ်လျှင် အစက ဖြစ်သွားစေရန်
+        resetApp();
         isPreviewOnly = !isPreviewOnly;
         const btn = document.getElementById('previewBtn');
 
@@ -622,7 +702,9 @@
             document.body.classList.add('preview-active');
             btn.innerText = "✏️ Edit";
             btn.classList.remove('btn-preview-mode');
-            document.querySelectorAll('[contenteditable]').forEach(el => el.setAttribute('contenteditable', 'false'));
+            document.querySelectorAll('[contenteditable="true"]').forEach(el => {
+                el.setAttribute('contenteditable', 'false');
+            });
         } else {
             document.body.classList.remove('preview-active');
             btn.innerText = "👁️ Preview";
@@ -633,15 +715,10 @@
     /* Modal Controls */
     function openGuideModal() { document.getElementById('guideModal').style.display = 'flex'; }
     function closeGuideModal() { document.getElementById('guideModal').style.display = 'none'; }
-    
-    function openFormspreeGuideModal() { 
-        resetApp(); // အောက် bar ခလုတ်နှိပ်လျှင် အစက ဖြစ်သွားစေရန်
-        document.getElementById('formspreeGuideModal').style.display = 'flex'; 
-    }
-    function closeFormspreeGuideModal() { document.getElementById('formspreeGuideModal').style.display = 'none'; }
-    
+
+    // Telegram နှိပ်တိုင်း အစက ဖြစ်သွားစေရန်
     function openTelegramModal() { 
-        resetApp(); // အောက် bar ခလုတ်နှိပ်လျှင် အစက ဖြစ်သွားစေရန်
+        resetApp();
         document.getElementById('telegramModal').style.display = 'flex'; 
     }
     function closeTelegramModal() { document.getElementById('telegramModal').style.display = 'none'; }
@@ -731,45 +808,51 @@
         r.style.setProperty('--no-bg', t.noBg);
     }
 
-    let currentMainGif = "https://i.pinimg.com/736x/91/e1/5f/91e15fec30e07a18152417c48d613dca.jpg";
-    let currentSuccessGif = "https://i.pinimg.com/736x/6c/01/49/6c0149f331f569419e234231b985a4a8.jpg";
-
-    let warnings = [
-        "တကယ်ပဲ ငြင်းမှာလား? 🥺",
-        "နောက်တစ်ခါ သေချာ စဉ်းစားပါဦး... 💔",
-        "စိတ်မဆိုးပါနဲ့နော်... ❤️",
-        "မနှိပ်ပါနဲ့တော့...😭",
-        "ချစ်တယ် ကိုပဲ နှိပ်လိုက်ပါတော့... ✨"
-    ];
-
-    let customCelebTitle = "I Love You Tooo Hee Hee ";
-    let customCelebDesc = "ကိုယ့်ကိုချစ်ခွင့် လေးပေးပါနော် အများကြီးချစ်ပေးမှာပါ";
-
-    let yesScale = 1;
-    let noScale = 1;
-    let noClickCount = 0;
-    let isAccepted = false;
-
-    let defaultTitle = "ကိုယ့်ကို ပြန်ချစ်နိုင်မလား .. ❤️";
-    let defaultYes = "ချစ်တယ်";
-    let defaultNo = "ဟင့်အင်";
-
+    // ===== EDIT FUNCTION =====
     function enableEdit(id, event) {
-        if(isPreviewOnly) return;
-        event.stopPropagation();
+        if (event) {
+            event.stopPropagation();
+            event.preventDefault();
+        }
+        if (isPreviewOnly) return;
+        
         const el = document.getElementById(id);
-        if(!el) return;
+        if (!el) return;
+        
         const isEditable = el.getAttribute('contenteditable') === 'true';
-
+        
         if (!isEditable) {
+            document.querySelectorAll('[contenteditable="true"]').forEach(other => {
+                if (other !== el) other.setAttribute('contenteditable', 'false');
+            });
+            
             el.setAttribute('contenteditable', 'true');
-            el.focus();
-            document.execCommand('selectAll', false, null);
-            getSelection().collapseToEnd();
+            
+            setTimeout(() => {
+                el.focus();
+                try {
+                    const range = document.createRange();
+                    const sel = window.getSelection();
+                    range.selectNodeContents(el);
+                    range.collapse(false);
+                    sel.removeAllRanges();
+                    sel.addRange(range);
+                } catch(e) {}
+            }, 50);
+            
             el.onblur = function() {
                 el.setAttribute('contenteditable', 'false');
-                if(id === 'celebTitle') customCelebTitle = el.innerText;
-                if(id === 'celebDesc') customCelebDesc = el.innerText;
+                if (id === 'mainTitle') {
+                    currentMainTitle = el.innerHTML;
+                } else if (id === 'yesBtn') {
+                    currentYesText = el.innerText;
+                } else if (id === 'noBtn') {
+                    currentNoText = el.innerText;
+                } else if (id === 'celebTitle') {
+                    currentCelebTitle = el.innerText;
+                } else if (id === 'celebDesc') {
+                    currentCelebDesc = el.innerText;
+                }
             };
         } else {
             el.setAttribute('contenteditable', 'false');
@@ -777,14 +860,18 @@
     }
 
     function openWarningModal(event) {
-        if(isPreviewOnly) return;
-        event.stopPropagation();
+        if (event) {
+            event.stopPropagation();
+            event.preventDefault();
+        }
+        if (isPreviewOnly) return;
+        
         const container = document.getElementById('warningInputsContainer');
         container.innerHTML = '';
         warnings.forEach((w) => {
             const row = document.createElement('div');
             row.className = 'warning-input-row';
-            row.innerHTML = `<input type="text" value="${w}"><button class="del-row-btn" onclick="this.parentElement.remove()">✕</button>`;
+            row.innerHTML = `<input type="text" value="${w}"><button type="button" class="del-row-btn" onclick="this.parentElement.remove()">✕</button>`;
             container.appendChild(row);
         });
         document.getElementById('warningModal').style.display = 'flex';
@@ -794,7 +881,7 @@
         const container = document.getElementById('warningInputsContainer');
         const row = document.createElement('div');
         row.className = 'warning-input-row';
-        row.innerHTML = `<input type="text" value="သတိပေးချက်အသစ်..."><button class="del-row-btn" onclick="this.parentElement.remove()">✕</button>`;
+        row.innerHTML = `<input type="text" value="သတိပေးချက်အသစ်..."><button type="button" class="del-row-btn" onclick="this.parentElement.remove()">✕</button>`;
         container.appendChild(row);
     }
 
@@ -828,26 +915,30 @@
         if(noBtn) noBtn.style.transform = `scale(${noScale})`;
     }
 
+    // ===== SAY YES (Success page ကို edit လုပ်နိုင်အောင်) =====
     function sayYes() {
         isAccepted = true;
         playSuccessSound();
 
         const yesBtn = document.getElementById('yesBtn');
         const noBtn = document.getElementById('noBtn');
-        const yesText = yesBtn ? yesBtn.innerText : defaultYes;
-        const noText = noBtn ? noBtn.innerText : defaultNo;
+        const yesText = yesBtn ? yesBtn.innerText : currentYesText;
+        const noText = noBtn ? noBtn.innerText : currentNoText;
 
         document.getElementById('card').innerHTML = `
-            <div style="margin-bottom: 15px;">
-                <div class="gif-wrapper">
+            <div class="editable-wrap" style="margin-bottom: 15px;">
+                <div class="gif-wrapper" onclick="triggerImageUpload('success')">
                     <img id="successGift" class="gift-img" src="${currentSuccessGif}">
                 </div>
+                <span class="edit-badge" onclick="triggerImageUpload('success')" title="ပုံပြောင်းရန် နှိပ်ပါ">✏️</span>
             </div>
-            <div style="margin-bottom: 12px;">
-                <div class="celebrate-title" id="celebTitle">${customCelebTitle}</div>
+            <div class="editable-wrap" style="margin-bottom: 12px;">
+                <div class="celebrate-title" id="celebTitle">${currentCelebTitle}</div>
+                <span class="edit-badge" onclick="enableEdit('celebTitle', event)" title="ပြင်ရန် နှိပ်ပါ">✏️</span>
             </div>
-            <div style="margin-bottom: 20px;">
-                <div class="celebrate-desc" id="celebDesc">${customCelebDesc}</div>
+            <div class="editable-wrap" style="margin-bottom: 20px;">
+                <div class="celebrate-desc" id="celebDesc">${currentCelebDesc}</div>
+                <span class="edit-badge" onclick="enableEdit('celebDesc', event)" title="ပြင်ရန် နှိပ်ပါ">✏️</span>
             </div>
         `;
 
@@ -864,21 +955,30 @@
         }
     }
 
+    // ===== RESET FUNCTION =====
     function resetApp() {
         isAccepted = false;
         yesScale = 1;
         noScale = 1;
         noClickCount = 0;
+        isPreviewOnly = false;
+        document.body.classList.remove('preview-active');
+        
+        const previewBtn = document.getElementById('previewBtn');
+        if (previewBtn) {
+            previewBtn.innerText = "👁️ Preview";
+            previewBtn.classList.add('btn-preview-mode');
+        }
 
         document.getElementById('card').innerHTML = `
             <div class="editable-wrap" style="margin-bottom: 15px;">
-                <div class="gif-wrapper">
+                <div class="gif-wrapper" onclick="triggerImageUpload('main')">
                     <img id="gift" class="gift-img" src="${currentMainGif}">
                 </div>
                 <span class="edit-badge" onclick="triggerImageUpload('main')" title="ပုံပြောင်းရန် နှိပ်ပါ">✏️</span>
             </div>
             <div class="editable-wrap">
-                <h2 id="mainTitle">${defaultTitle}</h2>
+                <h2 id="mainTitle">${currentMainTitle}</h2>
                 <span class="edit-badge" onclick="enableEdit('mainTitle', event)" title="ပြင်ရန် နှိပ်ပါ">✏️</span>
             </div>
             <div class="warning-container">
@@ -889,11 +989,11 @@
             </div>
             <div class="btn-group">
                 <div class="btn-editable-wrap">
-                    <button id="yesBtn" class="interactive-btn yes-btn" onclick="sayYes()">${defaultYes}</button>
+                    <button id="yesBtn" class="interactive-btn yes-btn" onclick="sayYes()">${currentYesText}</button>
                     <span class="edit-badge" onclick="enableEdit('yesBtn', event)" title="ပြင်ရန် နှိပ်ပါ">✏️</span>
                 </div>
                 <div class="btn-editable-wrap">
-                    <button id="noBtn" class="interactive-btn no-btn" onclick="sayNo()">${defaultNo}</button>
+                    <button id="noBtn" class="interactive-btn no-btn" onclick="sayNo()">${currentNoText}</button>
                     <span class="edit-badge" onclick="enableEdit('noBtn', event)" title="ပြင်ရန် နှိပ်ပါ">✏️</span>
                 </div>
             </div>
@@ -988,7 +1088,7 @@
             const currentTitleEl = document.getElementById('mainTitle');
             const cloneTitleEl = cloneDoc.querySelector('#mainTitle');
             if (currentTitleEl && cloneTitleEl) {
-                cloneTitleEl.innerText = currentTitleEl.innerText;
+                cloneTitleEl.innerHTML = currentTitleEl.innerHTML;
             }
 
             const currentWarningEl = document.getElementById('warning');
@@ -997,21 +1097,53 @@
                 cloneWarningEl.innerText = currentWarningEl.innerText;
             }
 
+            const currentYesBtnEl = document.getElementById('yesBtn');
+            const cloneYesBtnEl = cloneDoc.querySelector('#yesBtn');
+            if (currentYesBtnEl && cloneYesBtnEl) {
+                cloneYesBtnEl.innerText = currentYesBtnEl.innerText;
+            }
+
+            const currentNoBtnEl = document.getElementById('noBtn');
+            const cloneNoBtnEl = cloneDoc.querySelector('#noBtn');
+            if (currentNoBtnEl && cloneNoBtnEl) {
+                cloneNoBtnEl.innerText = currentNoBtnEl.innerText;
+            }
+
             const scriptTag = cloneDoc.querySelector('script');
             if (scriptTag) {
-                scriptTag.innerHTML = scriptTag.innerHTML.replace(
-                    /let warnings = \[[\s\S]*?\];/,
-                    `let warnings = ${JSON.stringify(warnings)};`
-                ).replace(
-                    /let currentMainGif = "[\s\S]*?";/,
-                    `let currentMainGif = "${currentMainGif}";`
-                ).replace(
-                    /let customCelebTitle = "[\s\S]*?";/,
-                    `let customCelebTitle = "${customCelebTitle}";`
-                ).replace(
-                    /let customCelebDesc = "[\s\S]*?";/,
-                    `let customCelebDesc = "${customCelebDesc}";`
-                );
+                scriptTag.innerHTML = scriptTag.innerHTML
+                    .replace(
+                        /let warnings = \[[\s\S]*?\];/,
+                        `let warnings = ${JSON.stringify(warnings)};`
+                    )
+                    .replace(
+                        /let currentMainGif = "[\s\S]*?";/,
+                        `let currentMainGif = "${currentMainGif}";`
+                    )
+                    .replace(
+                        /let currentSuccessGif = "[\s\S]*?";/,
+                        `let currentSuccessGif = "${currentSuccessGif}";`
+                    )
+                    .replace(
+                        /let currentMainTitle = "[\s\S]*?";/,
+                        `let currentMainTitle = ${JSON.stringify(currentMainTitle)};`
+                    )
+                    .replace(
+                        /let currentYesText = "[\s\S]*?";/,
+                        `let currentYesText = ${JSON.stringify(currentYesText)};`
+                    )
+                    .replace(
+                        /let currentNoText = "[\s\S]*?";/,
+                        `let currentNoText = ${JSON.stringify(currentNoText)};`
+                    )
+                    .replace(
+                        /let currentCelebTitle = "[\s\S]*?";/,
+                        `let currentCelebTitle = ${JSON.stringify(currentCelebTitle)};`
+                    )
+                    .replace(
+                        /let currentCelebDesc = "[\s\S]*?";/,
+                        `let currentCelebDesc = ${JSON.stringify(currentCelebDesc)};`
+                    );
             }
 
             cloneDoc.querySelectorAll('.edit-badge, .top-bar-left, .bottom-bar, .modal-overlay, #hiddenFileInput').forEach(el => el.remove());
