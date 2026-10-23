@@ -492,7 +492,7 @@
 <div class="bottom-bar">
     <input type="text" id="formspreeUrlInput" class="formspree-input" placeholder="Formspree URL..." oninput="updateFormspree(this)">
     <button id="previewBtn" class="control-action-btn btn-preview-mode" onclick="togglePreview()">👁️ Preview</button>
-    <button class="control-action-btn btn-telegram-mode" onclick="openTelegramModal()">🚀 Telegram</button>
+    <button class="control-action-btn btn-telegram-mode" onclick="openTelegramModal()">🚀 To Admin</button>
     <button class="control-action-btn" onclick="resetApp()">🔄 အစက</button>
 </div>
 
@@ -502,7 +502,7 @@
         <div class="guide-step"><div class="guide-step-num">1</div><div><strong>စာသားနှင့် ပုံများပြင်ဆင်ခြင်း:</strong> ကတ်ပေါ်ရှိ ခဲတန် (✏️) လေးများကို နှိပ်၍ မိမိလိုချင်သော စာသားနှင့် ပုံများကို ပြင်ဆင်ပါ။</div></div>
         <div class="guide-step"><div class="guide-step-num">2</div><div><strong>Warning များနှင့် Theme များ:</strong> 'ဟင့်အင်' နှိပ်တိုင်းပေါ်မည့် သတိပေးချက်စာသားများကို စီမံနိုင်ပြီး ဘယ်ဘက်အပေါ်ထောင့်မှ Theme ၅ မျိုးပြောင်းနိုင်ပါသည်။</div></div>
         <div class="guide-step"><div class="guide-step-num">3</div><div><strong>Formspree ချိတ်ဆက်ခြင်း:</strong> အောက်ခြေဘားတွင်ရှိသော <strong>Formspree URL...</strong> နေရာတွင် မိမိ Formspree Endpoint URL ထည့်သွင်းပါက လက်ခံရရှိချိန် မေးလ်တိုက်ရိုက်ဝင်မည် ဖြစ်ပါသည်။</div></div>
-        <div class="guide-step"><div class="guide-step-num">4</div><div><strong>Telegram သို့ ပို့ဆောင်ခြင်း:</strong> ပြီးပြည့်စုံပါက '🚀 Telegram' ခလုတ်ကို နှိပ်၍ ငွေလွှဲပြေစာတင်ကာ ဘော့တ်ထဲသို့ တိုက်ရိုက်ပို့နိုင်ပါသည်။</div></div>
+        <div class="guide-step"><div class="guide-step-num">4</div><div><strong>Admin သို့ ပို့ဆောင်ခြင်း:</strong> ပြီးပြည့်စုံပါက '🚀To Admin' ခလုတ်ကို နှိပ်၍ ငွေလွှဲပြေစာတင်ကာ ဘော့တ်ထဲသို့ တိုက်ရိုက်ပို့နိုင်ပါသည်။</div></div>
         <button class="modal-btn save-btn" onclick="closeGuideModal()">✅ နားလည်ပါပြီ</button>
     </div>
 </div>
@@ -521,7 +521,7 @@
     <div class="modal-content" style="position: relative;">
         <div class="loading-overlay" id="loadingOverlay">
             <div class="loading-spinner"></div>
-            <div class="loading-text">Telegram သို့ ပို့ဆောင်နေပါသည်... ⏳</div>
+            <div class="loading-text">Admin သို့ ပို့ဆောင်နေပါသည်... ⏳</div>
         </div>
 
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1.5px solid #f1f5f9; padding-bottom: 8px; gap: 8px;">
@@ -567,7 +567,7 @@
                 <input type="text" id="telegramHtmlFileName" placeholder="e.g. proposal.html" oninput="handleFormChange()" value="proposal.html">
             </div>
 
-            <button type="button" class="modal-btn save-btn" id="sendBtn" onclick="sendToTelegramBot()" disabled style="background: linear-gradient(135deg, #3b82f6, #2563eb); margin-top: 10px; padding: 12px;">🚀 Send to Telegram</button>
+            <button type="button" class="modal-btn save-btn" id="sendBtn" onclick="sendToTelegramBot()" disabled style="background: linear-gradient(135deg, #3b82f6, #2563eb); margin-top: 10px; padding: 12px;">🚀 Send to Admin</button>
         </div>
 
         <div class="thankyou-section" id="thankyouSection">
