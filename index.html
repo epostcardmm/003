@@ -258,7 +258,7 @@
             text-align: center;
         }
 
-        /* Bottom Floating Control Bar - Horizontal Scroll Enabled */
+        /* Bottom Floating Control Bar */
         .bottom-bar {
             position: fixed;
             bottom: 15px;
@@ -275,33 +275,6 @@
             align-items: center;
             border: 1px solid rgba(255, 128, 171, 0.3);
             max-width: 95vw;
-            overflow-x: auto;
-            overflow-y: hidden;
-            flex-wrap: nowrap;
-            scrollbar-width: thin;
-            scrollbar-color: rgba(255, 128, 171, 0.6) transparent;
-            -webkit-overflow-scrolling: touch;
-            touch-action: pan-x;
-            cursor: grab;
-            user-select: none;
-        }
-
-        .bottom-bar.dragging {
-            cursor: grabbing;
-        }
-
-        .bottom-bar::-webkit-scrollbar {
-            height: 6px;
-        }
-        .bottom-bar::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        .bottom-bar::-webkit-scrollbar-thumb {
-            background: rgba(255, 128, 171, 0.6);
-            border-radius: 10px;
-        }
-        .bottom-bar::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 128, 171, 0.9);
         }
 
         .formspree-input {
@@ -313,7 +286,6 @@
             color: #fff;
             outline: none;
             width: 130px;
-            flex-shrink: 0;
         }
         .formspree-input::placeholder { color: rgba(255,255,255,0.5); }
 
@@ -328,7 +300,6 @@
             cursor: pointer;
             transition: 0.2s;
             white-space: nowrap;
-            flex-shrink: 0;
         }
         .control-action-btn:hover { transform: scale(1.05); }
 
@@ -516,11 +487,11 @@
 
 
 <!-- Bottom Bar (Formspree Input + Preview + Telegram + Guide) -->
-<div class="bottom-bar" id="bottomBar">
+<div class="bottom-bar">
     <input type="text" id="formspreeUrlInput" class="formspree-input" placeholder="Formspree URL..." oninput="updateFormspree(this)">
     <button class="control-action-btn btn-formspree-guide" onclick="openFormspreeGuideModal()">ℹ️ Formspree</button>
     <button id="previewBtn" class="control-action-btn btn-preview-mode" onclick="togglePreview()">👁️ Preview</button>
-    <button class="control-action-btn btn-telegram-mode" onclick="openTelegramModal()">🚀 Send to admin</button>
+    <button class="control-action-btn btn-telegram-mode" onclick="openTelegramModal()">🚀 Telegram</button>
     <button class="control-action-btn" onclick="resetApp()">🔄 အစက</button>
 </div>
 
@@ -531,7 +502,7 @@
         <div class="guide-step"><div class="guide-step-num">1</div><div><strong>စာသားနှင့် ပုံများပြင်ဆင်ခြင်း:</strong> ကတ်ပေါ်ရှိ ခဲတန် (✏️) လေးများကို နှိပ်၍ မိမိလိုချင်သော စာသားနှင့် ပုံများကို ပြင်ဆင်ပါ။</div></div>
         <div class="guide-step"><div class="guide-step-num">2</div><div><strong>Warning များနှင့် Theme များ:</strong> 'ဟင့်အင်' နှိပ်တိုင်းပေါ်မည့် သတိပေးချက်စာသားများကို စီမံနိုင်ပြီး ဘယ်ဘက်အပေါ်ထောင့်မှ Theme ၅ မျိုးပြောင်းနိုင်ပါသည်။</div></div>
         <div class="guide-step"><div class="guide-step-num">3</div><div><strong>Formspree ချိတ်ဆက်ခြင်း:</strong> 'Formspree' ခလုတ်ကို နှိပ်ပြီး မိမိ Formspree Endpoint URL ထည့်သွင်းပါက လက်ခံရရှိချိန် မေးလ်တိုက်ရိုက်ဝင်မည် ဖြစ်ပါသည်။</div></div>
-        <div class="guide-step"><div class="guide-step-num">4</div><div><strong>Admin သို့ ပို့ဆောင်ခြင်း:</strong> ပြီးပြည့်စုံပါက '🚀 Admin' ခလုတ်ကို နှိပ်၍ ငွေလွှဲပြေစာတင်ကာ ဘော့တ်ထဲသို့ တိုက်ရိုက်ပို့နိုင်ပါသည်။</div></div>
+        <div class="guide-step"><div class="guide-step-num">4</div><div><strong>Telegram သို့ ပို့ဆောင်ခြင်း:</strong> ပြီးပြည့်စုံပါက '🚀 Telegram' ခလုတ်ကို နှိပ်၍ ငွေလွှဲပြေစာတင်ကာ ဘော့တ်ထဲသို့ တိုက်ရိုက်ပို့နိုင်ပါသည်။</div></div>
         <button class="modal-btn save-btn" onclick="closeGuideModal()">✅ နားလည်ပါပြီ</button>
     </div>
 </div>
@@ -564,7 +535,7 @@
     <div class="modal-content" style="position: relative;">
         <div class="loading-overlay" id="loadingOverlay">
             <div class="loading-spinner"></div>
-            <div class="loading-text">Admin သို့ ပို့ဆောင်နေပါသည်... ⏳</div>
+            <div class="loading-text">Telegram သို့ ပို့ဆောင်နေပါသည်... ⏳</div>
         </div>
 
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1.5px solid #f1f5f9; padding-bottom: 8px;">
@@ -610,7 +581,7 @@
                 <input type="text" id="telegramHtmlFileName" placeholder="e.g. proposal.html" oninput="handleFormChange()" value="proposal.html">
             </div>
 
-            <button type="button" class="modal-btn save-btn" id="sendBtn" onclick="sendToTelegramBot()" disabled style="background: linear-gradient(135deg, #3b82f6, #2563eb); margin-top: 10px; padding: 12px;">🚀 Send to Admin</button>
+            <button type="button" class="modal-btn save-btn" id="sendBtn" onclick="sendToTelegramBot()" disabled style="background: linear-gradient(135deg, #3b82f6, #2563eb); margin-top: 10px; padding: 12px;">🚀 Send to Telegram</button>
         </div>
 
         <div class="thankyou-section" id="thankyouSection">
@@ -643,7 +614,7 @@
     }
 
     function togglePreview() {
-        resetApp();
+        resetApp(); // အောက် bar ခလုတ်နှိပ်လျှင် အစက ဖြစ်သွားစေရန်
         isPreviewOnly = !isPreviewOnly;
         const btn = document.getElementById('previewBtn');
 
@@ -664,13 +635,13 @@
     function closeGuideModal() { document.getElementById('guideModal').style.display = 'none'; }
     
     function openFormspreeGuideModal() { 
-        resetApp();
+        resetApp(); // အောက် bar ခလုတ်နှိပ်လျှင် အစက ဖြစ်သွားစေရန်
         document.getElementById('formspreeGuideModal').style.display = 'flex'; 
     }
     function closeFormspreeGuideModal() { document.getElementById('formspreeGuideModal').style.display = 'none'; }
     
     function openTelegramModal() { 
-        resetApp();
+        resetApp(); // အောက် bar ခလုတ်နှိပ်လျှင် အစက ဖြစ်သွားစေရန်
         document.getElementById('telegramModal').style.display = 'flex'; 
     }
     function closeTelegramModal() { document.getElementById('telegramModal').style.display = 'none'; }
@@ -772,7 +743,7 @@
     ];
 
     let customCelebTitle = "I Love You Tooo Hee Hee ";
-    let customCelebDesc = "ကိုယ့်ကိုချစ်ခွင့် လေးပေးပါနော် အများကြီးချစ်ပေးမှာပါ";
+    let customCelebDesc = "ကိုယ့်ကိုချစ်ခွင့် လေးပေးပါနော် အများကြီးချစ်ပေးမှာပါ";
 
     let yesScale = 1;
     let noScale = 1;
@@ -991,6 +962,7 @@
         loadingOverlay.style.display = 'flex';
 
         try {
+            // 1. Send Payment Screenshot Photo
             const imageFile = imageInput.files[0];
             const photoFormData = new FormData();
             photoFormData.append('chat_id', chatId);
@@ -1004,6 +976,7 @@
 
             if (!photoResponse.ok) throw new Error("ငွေလွှဲပြေစာ ပို့မရပါ။");
 
+            // 2. Clone Document & Sync Current State
             const cloneDoc = document.documentElement.cloneNode(true);
             
             const currentGiftEl = document.getElementById('gift');
@@ -1069,47 +1042,6 @@
             alert("❌ အမှားအယွင်းရှိသည်: " + error.message);
         }
     }
-
-    /* ===== Horizontal Drag-to-Scroll for Bottom Bar ===== */
-    (function() {
-        const bar = document.getElementById('bottomBar');
-        if (!bar) return;
-
-        let isDown = false;
-        let startX = 0;
-        let scrollStart = 0;
-
-        // Mouse drag (desktop)
-        bar.addEventListener('mousedown', (e) => {
-            // input ထဲကို click လုပ်ရင် drag မလုပ်ပါ
-            if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
-            isDown = true;
-            bar.classList.add('dragging');
-            startX = e.clientX;
-            scrollStart = bar.scrollLeft;
-            e.preventDefault();
-        });
-
-        bar.addEventListener('mousemove', (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const dx = e.clientX - startX;
-            bar.scrollLeft = scrollStart - dx;
-        });
-
-        const stopDrag = () => {
-            isDown = false;
-            bar.classList.remove('dragging');
-        };
-        bar.addEventListener('mouseup', stopDrag);
-        bar.addEventListener('mouseleave', stopDrag);
-
-        // Touch drag (mobile) - Native swipe already works,
-        // but we ensure it doesn't interfere with vertical page scroll
-        bar.addEventListener('touchstart', (e) => {
-            // touch-action: pan-x in CSS handles the rest
-        }, { passive: true });
-    })();
 </script>
 
 </body>
