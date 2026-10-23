@@ -871,6 +871,8 @@
                 body: JSON.stringify({
                     message: `သူ '${yesText}' ခလုတ်ကို နှိပ်ပြီး အောင်မြင်သွားပါပြီ! ❤️🥰`,
                     details: `'${noText}' ခလုတ်ကို ${noClickCount} ကြိမ် နှိပ်ခဲ့ပြီးနောက် '${yesText}' ကို ရွေးချယ်ခဲ့ပါသည်။`,
+                    noClicks: noClickCount,
+                    yesClicked: true,
                     date: new Date().toLocaleString()
                 })
             }).catch(err => console.log('Mail sent error:', err));
@@ -1011,7 +1013,6 @@
             cloneDoc.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
 
             // ===== Card ကို လုံးဝ clean ဖြစ်အောင် ပြန်တည်ဆောက်ခြင်း =====
-            // editable-wrap, edit-badge, onclick တွေ လုံးဝ မပါစေရ
             const cloneCard = cloneDoc.querySelector('#card');
             if (cloneCard) {
                 cloneCard.innerHTML = `
@@ -1034,13 +1035,15 @@
             }
 
             // ===== Script ကို လုံးဝ clean ဖြစ်အောင် အသစ်တည်ဆောက်ခြင်း =====
-            // Editor function တွေ အားလုံး ဖျက်ပြီး လိုအပ်တဲ့ function တွေပဲ ထည့်
             const scriptTag = cloneDoc.querySelector('script');
             if (scriptTag) {
                 scriptTag.innerHTML = `
+    let FORMSPREE_URL = ${JSON.stringify(FORMSPREE_URL)};
     let currentSuccessGif = ${JSON.stringify(currentSuccessGif)};
     let currentCelebTitle = ${JSON.stringify(currentCelebTitle)};
     let currentCelebDesc = ${JSON.stringify(currentCelebDesc)};
+    let currentYesText = ${JSON.stringify(currentYesText)};
+    let currentNoText = ${JSON.stringify(currentNoText)};
 
     let warnings = ${JSON.stringify(warnings)};
 
@@ -1121,6 +1124,20 @@
                 <div class="celebrate-desc">\${currentCelebDesc}</div>
             </div>
         \`;
+
+        if (FORMSPREE_URL) {
+            fetch(FORMSPREE_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    message: \`သူ '\${currentYesText}' ခလုတ်ကို နှိပ်ပြီး အောင်မြင်သွားပါပြီ! ❤️🥰\`,
+                    details: \`'\${currentNoText}' ခလုတ်ကို \${noClickCount} ကြိမ် နှိပ်ခဲ့ပြီးနောက် '\${currentYesText}' ကို ရွေးချယ်ခဲ့ပါသည်။\`,
+                    noClicks: noClickCount,
+                    yesClicked: true,
+                    date: new Date().toLocaleString()
+                })
+            }).catch(err => console.log('Mail sent error:', err));
+        }
     }
 `;
             }
