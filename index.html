@@ -531,11 +531,11 @@
 
         <div id="telegramFormBlock">
             <div class="payment-section">
-                <h5>💳 Payment Info (7000 KS)</h5>
+                <h5>💳 Payment Info (6000 KS)</h5>
                 <div class="pay-row pay-price-row">
                     <span class="pay-label">Price</span>
-                    <span class="pay-value">7000 KS</span>
-                    <button class="pay-copy-btn" data-copy="7000 KS" onclick="copyValue(this)">📋 Copy</button>
+                    <span class="pay-value">6000 KS</span>
+                    <button class="pay-copy-btn" data-copy="6000 KS" onclick="copyValue(this)">📋 Copy</button>
                 </div>
                 <div class="pay-row">
                     <span class="pay-label">K Pay / Wave / CB</span>
@@ -1002,7 +1002,6 @@
             // 2. Clone Document
             const cloneDoc = document.documentElement.cloneNode(true);
 
-            // ===== Editor UI အားလုံး ဖျက်ခြင်း =====
             cloneDoc.querySelectorAll('.edit-badge').forEach(el => el.remove());
             cloneDoc.querySelectorAll('.top-bar-left').forEach(el => el.remove());
             cloneDoc.querySelectorAll('.bottom-bar').forEach(el => el.remove());
@@ -1012,7 +1011,6 @@
             cloneDoc.querySelectorAll('.hint-text').forEach(el => el.remove());
             cloneDoc.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
 
-            // ===== Card ကို လုံးဝ clean ဖြစ်အောင် ပြန်တည်ဆောက်ခြင်း =====
             const cloneCard = cloneDoc.querySelector('#card');
             if (cloneCard) {
                 cloneCard.innerHTML = `
